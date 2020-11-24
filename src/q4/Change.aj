@@ -62,10 +62,12 @@ public privileged aspect Change {
 	void around(Circle c): constructorCir(c){
 		ids++;
 		c.id = ids;
+		proceed(c);
 	}
 	void around(Rectangle r): constructorRec(r){
 		ids++;
 		r.id = ids;
+		proceed(r);
 	}
 	
 	public int Circle.getId(){
