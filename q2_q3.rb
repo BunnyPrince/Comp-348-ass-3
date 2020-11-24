@@ -50,7 +50,7 @@ until count >= c-1
     minor = info_array[count].to_i
     #error message is the major or minor value is negative
     if major < 0 or minor < 0 
-      puts "Error invalid ellipse"
+      puts "Error invalid ellipse with semi-major #{major} and semi-minor #{minor}"
     else
       e1 = Ellipse.new(major, minor)
       all_shapes[count] = e1
