@@ -24,7 +24,7 @@ until count >= c-1
     radius = info_array[count].to_i
     #error message is radius is negative
     if radius < 0 
-      puts "Error invalid circle"
+      puts "Error invalid circle with radius #{radius}\n\n"
     else 
       c1 = Circle.new(radius)
       all_shapes[count] = c1
@@ -37,7 +37,7 @@ until count >= c-1
     width = info_array[count].to_i
     #error message is the height or the width is negative
     if height < 0 or width <0
-      puts "Error invalid Rectangle"
+      puts "Error invalid Rectangle with height #{height} and width #{width}\n\n"
     else
       r1 = Rectangle.new(height, width)
       all_shapes[count] = r1
