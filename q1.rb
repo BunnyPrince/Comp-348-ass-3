@@ -50,6 +50,9 @@ class Circle < Shape
     end
     #initializing the get methods
     def perimeter
+      if @radius == 0
+        return 0
+      end
         return 2 * PI * @radius
     end
     
@@ -71,6 +74,9 @@ class Rectangle < Shape
     end
     #initializing get methods
     def perimeter
+      if @height == 0 or @width == 0
+        return 0
+      end
         return (2 * @height) + (2 * @width)
     end
     
