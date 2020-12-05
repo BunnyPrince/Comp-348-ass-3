@@ -14,12 +14,13 @@ public privileged aspect Change {
 	
 //	q4.2.2
 	public String Circle.toString(){
-		return "A Circle with a radius of" +this.radius + " is represented as the string \"(Circle(" +this.radius + ").";
+		return "Circle(" +this.radius + ")";
 	}
 	
 	public String Rectangle.toString(){
-		return "A Rectangle with a width of" +this.width+ " and a height of "+this.height +" is represented as the string \"(Rectangle(" +this.width+ ","+this.height +").";
+		return "Rectangle(" +this.width+ ","+this.height +")";
 	}
+	
 	
 //	4.2.3
 	pointcut monitorGetAreaCir(Circle c): execution(double Circle.getArea()) && this(c);
