@@ -8,7 +8,11 @@ info_array = info.split
 c = info_array.length
 
 # array to get info of all the shapes initialized
-all_shapes = Hash.new("shape")
+numShapes = Hash.new()
+numShapes["Shape"] = 0
+numShapes["Rectangle"] = 0
+numShapes["Circle"] = 0
+numShapes["Ellipse"] = 0
 count = 0
 
 #creating all the object and printing it 
@@ -16,10 +20,13 @@ until count >= c-1
   name = info_array[count]
   #if Shape, creat Shape object and past it to the array 
   if name == "shape"
+    numShapes["Shape"] += 1
     s1 = Shape.new()
-    all_shapes[count] = s1
+    puts s1.print
   #if circle, creat circle object and past it to the array 
   elsif name == "circle"
+      numShapes["Shape"] += 1
+      numShapes["Circle"] += 1
     count +=1
     radius = info_array[count].to_i
     #error message is radius is negative
@@ -27,10 +34,12 @@ until count >= c-1
       puts "Error invalid circle with radius #{radius}\n\n"
     else 
       c1 = Circle.new(radius)
-      all_shapes[count] = c1
+      puts c1.print
     end
   #if rectangle, creat rectangle object and past it to the array 
   elsif name == "rectangle"
+      numShapes["Shape"] += 1
+      numShapes["Rectangle"] += 1
     count +=1
     height = info_array[count].to_i
     count +=1
@@ -40,10 +49,12 @@ until count >= c-1
       puts "Error invalid Rectangle with height #{height} and width #{width}\n\n"
     else
       r1 = Rectangle.new(height, width)
-      all_shapes[count] = r1
+      puts r1.print
     end
   #if ellipse, creat ellipse object and past it to the array 
   elsif name == "ellipse"
+      numShapes["Shape"] += 1
+      numShapes["Ellipse"] += 1
     count += 1
     major = info_array[count].to_i
     count +=1
@@ -53,48 +64,19 @@ until count >= c-1
       puts "Error invalid ellipse with semi-major #{major} and semi-minor #{minor}\n\n"
     else
       e1 = Ellipse.new(major, minor)
-      all_shapes[count] = e1
+      puts e1.print
     end
   #error mesaage is it is not a shape
   else
-    puts "#{name} is not a Shape "
+    puts "#{name} is not a Shape\n\n "
   end  
   count +=1
 end
 
-#print all the info all the shapes
-all_shapes.each do |key, value|
-  puts value.print
-end
+
 
 
 #question 3
-c_shape = 0
-c_circle = 0
-c_rectangle = 0
-c_ellipse = 0
-#loop to find out the number of eash shapes and see it is subclass of Shape
-all_shapes.each do |key, value|
-  if value.class == Shape
-    c_shape += 1
-  elsif value.class == Circle
-    c_circle += 1
-    if value.class < Shape
-      c_shape += 1
-    end
-  elsif value.class == Rectangle
-    c_rectangle += 1
-    if value.class < Shape
-      c_shape += 1
-    end
-  else 
-    c_ellipse += 1
-    if value.class < Shape
-      c_shape += 1
-    end
-  end
+numShapes.each do |key, value|
+  puts "#{key}(s): #{value}"
 end
-
-#print the number of each shape
-puts "Statistics\n\tShape(s): #{c_shape}\n\tRectangle(s): #{c_rectangle}"
-puts "\tCircle(s): #{c_circle}\n\tEllipse(s): #{c_ellipse}"
